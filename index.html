@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="fonts/MyFont-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <title>КАЛЬЯННЫЙ КЕЙТЕРИНГ В МОСКВЕ И ОБЛАСТИ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-family: 'Unbounded';
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+        
+        h2 {
+            font-family: 'Unbounded';
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+        
+        h3 {
+            font-family: 'Unbounded';
+            font-weight: 700;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: #cccccc;
+        }
+        
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 1px solid #B07E4C;
+        }
+        
+        header h1 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        header p {
+            color: #aaaaaa;
+            font-size: 1.1rem;
+        }
+        
+        /* Раздел заказа */
+        .order-section {
+            background-color: #000000;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+        
+        .price-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .price-item {
+            background-color: #111111;
+            border: 1px solid #B07E4C;
+            border-radius: 10px;
+            padding: 30px;
+            width: 280px;
+            transition: transform 0.3s ease;
+        }
+        
+        .price-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .price-item h3 {
+            color: #B07E4C;
+        }
+        
+        .price-item p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #B07E4C;
+        }
+        
+        .included {
+            background-color: #000000;
+            padding: 40px 0;
+            border-bottom: 1px solid #222;
+        }
+        
+        .included-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .included-item {
+            background-color: #111111;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .included-item:hover {
+            border-color: #B07E4C;
+            background-color: #1a1a1a;
+        }
+        
+        /* Раздел о сервисе */
+        .service-section {
+            background-color: #000000;
+            padding: 60px 0;
+            border-bottom: 1px solid #222;
+        }
+        
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            padding: 25px;
+            background-color: #111111;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            border-color: #B07E4C;
+            background-color: #1a1a1a;
+        }
+        
+        .step h4 {
+            color: #B07E4C;
+            margin-bottom: 15px;
+        }
+        
+        /* Отзывы */
+        .reviews-section {
+            background-color: #000000;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .review {
+            background-color: #111111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        
+        .review:hover {
+            border-color: #B07E4C;
+            background-color: #1a1a1a;
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            color: #B07E4C;
+        }
+        
+        /* Кнопка */
+        .btn {
+            display: inline-block;
+            background-color: #B07E4C;
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #9a6b40;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #000000;
+            color: #aaaaaa;
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #B07E4C;
+        }
+        
+        footer p {
+            color: #aaaaaa;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .price-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .price-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 40px 0;
+            }
+            
+            .included-items {
+                grid-template-columns: 1fr;
+            }
+        }
+
+            @font-face {
+        font-family: 'Montserrat'; /* Название шрифта */
+        src: url('C:\Users\София\Downloads\Montserrat\Montserrat-Italic-VariableFont_wght.ttf') format('ttf');
+        font-weight: 700;
+        font-style: normal;
+        }
+            @font-face {
+        font-family: 'Unbounded';
+        src: url('C:\Users\София\Downloads\Russo_One,Unbounded\Unbounded\Unbounded-VariableFont_wght.ttf') format('tff');
+        font-weight: 400; 
+        font-style: normal;
+    }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <h1>КАЛЬЯННЫЙ КЕЙТЕРИНГ</h1>
+            <h2>В МОСКВЕ И ОБЛАСТИ</h2>
+            <p>атмосфера и сервис лучших кальянных на вашем мероприятии</p>
+            <a href="#order" class="btn">ЗАКАЗАТЬ</a>
+        </div>
+    </header>
+    
+    <!-- Раздел заказа -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2>СДЕЛАТЬ ЗАКАЗ</h2>
+            <h3>СТОИМОСТЬ</h3>
+            
+            <p>Доставка кальянов - это удобный способ получить ароматный и насыщенный паровой коктейль уровня кальянной, не выбираясь из уютного дома. У нас Вы можете заказать кальян любого вкуса и крепости с доставкой в течение получаса, а на следующий день его заберут в комфортное для Вас время.</p>
+            
+            <div class="price-container">
+                <div class="price-item">
+                    <h3>Кальян на чаше</h3>
+                    <p>2990 ₽</p>
+                    <button class="btn">ЗАКАЗАТЬ</button>
+                </div>
+                <div class="price-item">
+                    <h3>Кальян на фрукте</h3>
+                    <p>3490 ₽</p>
+                    <button class="btn">ЗАКАЗАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Что включено -->
+    <section class="included">
+        <div class="container">
+            <h2>ВКЛЮЧЕНО</h2>
+            <div class="included-items">
+                <div class="included-item">доставка внутри МКАД</div>
+                <div class="included-item">уголь</div>
+                <div class="included-item">мундштуки</div>
+                <div class="included-item">кальян</div>
+                <div class="included-item">вкусовая чаша</div>
+                <div class="included-item">электроплитка</div>
+                <div class="included-item">калауд</div>
+                <div class="included-item">щипцы</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- О сервисе -->
+    <section class="service-section">
+        <div class="container">
+            <h2>Кальяны на вашем празднике - способ создать атмосферу непринужденности и развлечь гостей.</h2>
+            <p>Мы используем только качественные российские кальяны и премиальные смеси</p>
+            
+            <h3>КАК ЗАКАЗАТЬ?</h3>
+            
+            <div class="steps">
+                <div class="step">
+                    <h4>1. Оставить заявку</h4>
+                    <p>Укажите адрес аренды кальяна, нужное количество приборов и чаш</p>
+                </div>
+                <div class="step">
+                    <h4>2. Выбрать вкус</h4>
+                    <p>Определитесь с кальянным табаком и медовым ароматом. Если возникнут трудности с выбором - поможем!</p>
+                </div>
+                <div class="step">
+                    <h4>3. Получить</h4>
+                    <p>Ваш кальян привезут быстрее чем за 50 минут, а при необходимости соберут его. Создайте атмосферу востока у себя дома.</p>
+                    <p><em>Табак в цену не входит</em></p>
+                </div>
+                <div class="step">
+                    <h4>4. Вернуть</h4>
+                    <p>На следующий день комплект заберут в удобное Вам время. Мыть кальян не нужно, просто слейте воду и сложите все в сумку.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#order" class="btn">ЗАКАЗАТЬ СЕЙЧАС</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Отзывы -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2>ОТЗЫВЫ</h2>
+            
+            <div class="reviews-grid">
+                <div class="review">
+                    <p class="review-text">Спасибо! Вы можете лучше всех!</p>
+                    <p class="review-author">Анна</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Прекрасный сервис, спасибо!</p>
+                    <p class="review-author">Михаил</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Огромное спасибо!</p>
+                    <p class="review-author">Екатерина</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Превосходное качество!</p>
+                    <p class="review-author">Дмитрий</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Очень приятно, заказываю второй раз</p>
+                    <p class="review-author">Алексей</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Чашка - просто бомба!</p>
+                    <p class="review-author">Ольга</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">Все супер, спасибо!</p>
+                    <p class="review-author">Иван</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Кальянный кейтеринг в Москве и области</p>
+            <p>Приятного отдыха! Спасибо за выбор!</p>
+            <a href="#order" class="btn" style="margin-top: 20px;">СДЕЛАТЬ ЗАКАЗ</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация при прокрутке
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.price-item, .step, .review, .included-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if(elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Инициализация анимации
+            const elementsToAnimate = document.querySelectorAll('.price-item, .step, .review, .included-item');
+            elementsToAnimate.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, background-color 0.3s ease';
+            });
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll();
+            
+            // Обработчик для кнопок заказа
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#order') return;
+                    
+                    e.preventDefault();
+                    alert('Заказ оформлен! Мы скоро с вами свяжемся.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
